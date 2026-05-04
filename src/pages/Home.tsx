@@ -3,10 +3,10 @@ import Logo from '../components/Logo';
 import LogoPinup from '../components/LogoPinup';
 
 const MODELS = [
-  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', color: '#ff1493' },
-  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', color: '#e11d91' },
-  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', color: '#a855f7' },
-  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', color: '#c026d3' },
+  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', color: '#ff1493', img: '/models/model1.jpg' },
+  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', color: '#e11d91', img: '/models/model2.jpg' },
+  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', color: '#a855f7', img: '/models/model3.jpg' },
+  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', color: '#c026d3', img: '/models/model4.jpg' },
 ];
 
 const PLATFORMS = [
@@ -184,17 +184,11 @@ export default function Home() {
               <p className="text-gray-500 max-w-xl mx-auto">Every model on our network gets daily pay, full privacy, and dedicated support.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {MODELS.map(({ name, tag, earnings, color }, i) => (
+              {MODELS.map(({ name, tag, earnings, color, img }, i) => (
                 <div key={name} className={`float-card-${i + 1}`}>
                   <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer rope-light" style={{ height: '420px' }}>
-                    <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
-                    <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                      <circle cx="100" cy="130" r="48" fill={`${color}44`} />
-                      <ellipse cx="100" cy="290" rx="72" ry="90" fill={`${color}33`} />
-                      <circle cx="100" cy="130" r="44" fill="rgba(255,255,255,0.06)" />
-                      <ellipse cx="100" cy="290" rx="68" ry="86" fill="rgba(255,255,255,0.04)" />
-                    </svg>
+                    <img src={img} alt={name} className="absolute inset-0 w-full h-full object-cover object-top" />
+                    <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}22 0%, transparent 70%)` }} />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
                     <div className="absolute top-4 left-4 z-10">
                       <span className="text-xs font-bold px-3 py-1.5 rounded-full" style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>{tag}</span>
