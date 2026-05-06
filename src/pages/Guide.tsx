@@ -12,7 +12,7 @@ const SECTIONS = [
 ];
 
 const PLATFORM_LINKS: Record<string, string> = {
-  Chaturbate: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default',
+  Chaturbate: 'https://chaturbate.com/in/?tour=5zjT&campaign=DddwF&track=default',
   OnlyFans: 'https://onlyfans.com?ref=40962198',
   Stripchat: 'https://stripchat.com/affiliates',
   Cam4: 'https://cam4.com/',
