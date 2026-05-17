@@ -62,6 +62,20 @@ export default function Guide() {
                 <p className="text-xs text-gray-400 mb-4">Our team is available 24/7 to help you get started.</p>
                 <a href="/register" className="block text-center py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold transition-colors">Contact Support</a>
               </div>
+
+              <a href="https://chaturbate.com/in/?tour=5zjT&campaign=DddwF&track=default" target="_blank" rel="noopener noreferrer"
+                className="mt-6 block p-5 rounded-2xl border border-[#f47321]/40 hover:border-[#f47321]/70 transition-all duration-200 group"
+                style={{ background: 'linear-gradient(135deg, rgba(244,115,33,0.12) 0%, rgba(244,115,33,0.04) 100%)' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center text-xs font-extrabold" style={{ background: '#f4732322', border: '1px solid #f4732344', color: '#f47321' }}>CB</div>
+                  <span className="text-xs font-bold text-white">Chaturbate</span>
+                  <span className="ml-auto text-[10px] px-1.5 py-0.5 rounded font-bold" style={{ background: '#f4732322', color: '#f47321' }}>#1</span>
+                </div>
+                <p className="text-xs text-gray-400 mb-3 leading-relaxed">World's largest cam platform. Start earning today — instant approval.</p>
+                <span className="block text-center py-2 rounded-lg text-xs font-bold text-white transition-all duration-200 group-hover:opacity-90" style={{ background: 'linear-gradient(135deg, #f47321, #e05a10)' }}>
+                  Sign Up Free →
+                </span>
+              </a>
             </div>
           </aside>
 
@@ -133,6 +147,22 @@ export default function Guide() {
                 ))}
               </div>
             </section>
+
+            <a href="https://chaturbate.com/in/?tour=5zjT&campaign=DddwF&track=default" target="_blank" rel="noopener noreferrer"
+              className="mb-12 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-3xl border border-[#f47321]/30 hover:border-[#f47321]/60 transition-all duration-300 group block"
+              style={{ background: 'linear-gradient(135deg, rgba(244,115,33,0.1) 0%, rgba(0,0,0,0) 100%)', boxShadow: '0 0 40px rgba(244,115,33,0.06)' }}>
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-display font-extrabold text-base shrink-0" style={{ background: '#f4732322', border: '1.5px solid #f4732355', color: '#f47321' }}>CB</div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: '#f47321' }}>Recommended Platform</p>
+                  <h3 className="text-xl font-display font-extrabold text-white">Start on Chaturbate Today</h3>
+                  <p className="text-sm text-gray-400 mt-1">World's #1 cam site — massive live audience, daily payouts, instant approval.</p>
+                </div>
+              </div>
+              <span className="shrink-0 px-7 py-3 rounded-full text-white font-bold text-sm transition-all duration-200 group-hover:scale-105" style={{ background: 'linear-gradient(135deg, #f47321, #e05a10)' }}>
+                Sign Up Free →
+              </span>
+            </a>
 
             <section id="your-first-week" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
