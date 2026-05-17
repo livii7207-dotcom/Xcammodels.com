@@ -28,14 +28,11 @@ export default function Apply() {
     e.preventDefault();
     setStatus('loading');
     const payload = { ...form, platforms: form.platforms.join(', '), equipment: form.equipment.join(', ') };
-    const id = (import.meta.env.VITE_FORMSPREE_ID as string) || '';
-    if (id) {
-      try {
-        const res = await fetch(`https://formspree.io/f/${id}`, { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-        setStatus(res.ok ? 'success' : 'error');
-      } catch { setStatus('error'); }
-    } else {
-      setStatus('success');
+    try {
+      const res = await fetch('/api/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      setStatus(res.ok ? 'success' : 'error');
+    } catch {
+      setStatus('error');
     }
   };
 
