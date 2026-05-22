@@ -24,7 +24,7 @@ const FAQ_ITEMS = [
   { q: 'How does daily pay work?', a: 'Your earnings are deposited automatically every day via bank transfer, Paxum, or your preferred method — no minimums.' },
   { q: 'Will anyone find out?', a: 'Your real identity is never exposed. Your name and personal info stay completely private.' },
   { q: 'What do I need to get started?', a: 'A phone or computer, any webcam (HD preferred), decent internet, and a valid government ID.' },
-  { q: 'Can couples join?', a: 'Yes — couples are welcome across all 8 platforms and often earn significantly more than solo performers.' },
+  { q: 'Who can join?', a: 'Everyone is welcome — women, men, couples, and non-binary creators. All body types, all backgrounds. The only requirements are that you\'re 18+ and have a valid government ID.' },
   { q: 'Is XCamModels free?', a: 'Completely free. We never take a cut of your earnings. The platforms pay you directly — XCamModels helps you get set up and earns a referral fee from the platforms themselves, not from you.' },
 ];
 
@@ -123,9 +123,10 @@ export default function Home() {
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-6">
             Earn More.{' '}<span className="neon-text">Stream Smarter.</span><br />Get Paid Daily.
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-3">
             Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
           </p>
+          <p className="text-sm text-gray-600 mb-8">Women · Men · Couples · Non-binary · All body types · 18+</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-5">
             <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
             <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
@@ -331,7 +332,7 @@ export default function Home() {
             ))}
           </div>
           <a href="/register" className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn">Apply as a Model</a>
-          <p className="text-gray-600 text-sm mt-6">Must be 18+ · Government ID required · Response within 24 hours</p>
+          <p className="text-gray-600 text-sm mt-6">All genders welcome · Must be 18+ · Government ID required · Response within 24 hours</p>
         </div>
       </section>
 
