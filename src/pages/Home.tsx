@@ -66,75 +66,67 @@ function useFadeIn() {
 }
 
 function SectionDivider() {
+  return <div className="h-px max-w-4xl mx-auto" style={{ background: 'linear-gradient(to right, transparent, rgba(255,20,147,0.18), transparent)' }} />;
+}
+
+/* Shared card content — rendered in both mobile scroll and desktop stack */
+function Card1() {
   return (
-    <div className="h-px max-w-4xl mx-auto" style={{ background: 'linear-gradient(to right, transparent, rgba(255,20,147,0.18), transparent)' }} />
+    <div className="glass rounded-2xl p-5 neon-border flex-shrink-0 w-72 lg:w-auto" style={{ boxShadow: '0 0 40px rgba(244,115,33,0.08)' }}>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-sm font-semibold text-white">Chaturbate</span>
+        </div>
+        <span className="text-xs text-gray-500">Today</span>
+      </div>
+      <div className="flex items-end justify-between mb-3">
+        <div>
+          <div className="text-3xl font-display font-extrabold text-white">$342<span className="text-lg text-gray-400">.00</span></div>
+          <div className="text-xs text-gray-500 mt-0.5">Live tips · Private shows</div>
+        </div>
+        <div className="text-right">
+          <div className="text-sm font-bold text-green-400">+18%</div>
+          <div className="text-xs text-gray-600">vs yesterday</div>
+        </div>
+      </div>
+      <div className="w-full h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+        <div className="h-full rounded-full" style={{ width: '76%', background: 'linear-gradient(to right, #f47321, #ff1493)' }} />
+      </div>
+      <div className="flex justify-between text-xs text-gray-600 mt-1.5">
+        <span>Daily goal</span><span>76%</span>
+      </div>
+    </div>
   );
 }
 
-function EarningsCards() {
+function Card2() {
   return (
-    <div className="hidden lg:flex flex-col gap-5 relative py-8">
-
-      {/* Card 1 — live earnings */}
-      <div className="float-card-1 glass rounded-2xl p-5 border border-white/8 neon-border" style={{ boxShadow: '0 0 40px rgba(244,115,33,0.08)' }}>
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-sm font-semibold text-white">Chaturbate</span>
-          </div>
-          <span className="text-xs text-gray-500">Today</span>
+    <div className="glass rounded-2xl p-5 border border-white/5 flex-shrink-0 w-64 lg:w-auto">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.25)' }}>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </div>
-        <div className="flex items-end justify-between mb-3">
-          <div>
-            <div className="text-3xl font-display font-extrabold text-white">$342<span className="text-lg text-gray-400">.00</span></div>
-            <div className="text-xs text-gray-500 mt-0.5">Live tips · Private shows</div>
-          </div>
-          <div className="text-right">
-            <div className="text-sm font-bold text-green-400">+18%</div>
-            <div className="text-xs text-gray-600">vs yesterday</div>
-          </div>
-        </div>
-        <div className="w-full h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
-          <div className="h-full rounded-full" style={{ width: '76%', background: 'linear-gradient(to right, #f47321, #ff1493)' }} />
-        </div>
-        <div className="flex justify-between text-xs text-gray-600 mt-1.5">
-          <span>Daily goal</span>
-          <span>76%</span>
+        <div>
+          <div className="text-xs text-gray-500 mb-0.5">Payout sent</div>
+          <div className="text-xl font-display font-extrabold text-white">$1,240.00</div>
+          <div className="text-xs text-gray-500">Bank Transfer · XCamModels daily</div>
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* Card 2 — payout notification */}
-      <div className="float-card-2 glass rounded-2xl p-5 border border-white/5" style={{ marginLeft: '24px' }}>
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.25)' }}>
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-xs text-gray-500 mb-0.5">Payout sent</div>
-            <div className="text-xl font-display font-extrabold text-white">$1,240.00</div>
-            <div className="text-xs text-gray-500">Bank Transfer · XCamModels daily</div>
-          </div>
-        </div>
+function Card3() {
+  return (
+    <div className="glass rounded-2xl p-5 border border-white/5 flex-shrink-0 w-64 lg:w-auto">
+      <div className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-widest">Active platforms</div>
+      <div className="flex gap-2 mb-3">
+        {[{ abbr: 'CB', color: '#f47321' }, { abbr: 'OF', color: '#00aff0' }, { abbr: 'SC', color: '#00b4a0' }, { abbr: 'MV', color: '#e91e8c' }].map(({ abbr, color }) => (
+          <div key={abbr} className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-extrabold font-display" style={{ background: `${color}22`, border: `1.5px solid ${color}55`, color }}>{abbr}</div>
+        ))}
       </div>
-
-      {/* Card 3 — platform activity */}
-      <div className="float-card-3 glass rounded-2xl p-5 border border-white/5" style={{ marginLeft: '8px' }}>
-        <div className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-widest">Active platforms</div>
-        <div className="flex gap-2 mb-3">
-          {[
-            { abbr: 'CB', color: '#f47321' },
-            { abbr: 'OF', color: '#00aff0' },
-            { abbr: 'SC', color: '#00b4a0' },
-            { abbr: 'MV', color: '#e91e8c' },
-          ].map(({ abbr, color }) => (
-            <div key={abbr} className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-extrabold font-display" style={{ background: `${color}22`, border: `1.5px solid ${color}55`, color }}>
-              {abbr}
-            </div>
-          ))}
-        </div>
-        <div className="text-xs text-gray-500">Earning across <span className="text-white font-semibold">4 platforms</span> today</div>
-      </div>
-
+      <div className="text-xs text-gray-500">Earning across <span className="text-white font-semibold">4 platforms</span> today</div>
     </div>
   );
 }
@@ -178,64 +170,77 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center px-4 sm:px-6 pt-16 overflow-hidden">
-        {/* Dot grid */}
         <div className="absolute inset-0 dot-grid pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)' }} />
-        {/* Aurora blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="aurora-blob w-[700px] h-[700px]" style={{ top: '-5%', left: '30%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, rgba(255,20,147,0.5) 0%, transparent 65%)' }} />
           <div className="aurora-blob w-[500px] h-[500px]" style={{ bottom: '5%', right: '-5%', background: 'radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
           <div className="aurora-blob w-[380px] h-[380px]" style={{ top: '40%', left: '-5%', background: 'radial-gradient(circle, rgba(192,38,211,0.35) 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
         </div>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto py-20">
+        <div className="relative z-10 w-full max-w-6xl mx-auto py-16 sm:py-20">
           <div className="grid lg:grid-cols-[1fr_400px] gap-10 xl:gap-16 items-center">
 
             {/* Left — text */}
             <div ref={heroRef} className="fade-up text-center lg:text-left">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-5">
                 Earn More.{' '}<span className="neon-text">Stream Smarter.</span><br />Get Paid Daily.
               </h1>
-              <p className="text-lg sm:text-xl text-gray-400 max-w-xl mb-3">
+              <p className="text-base sm:text-xl text-gray-400 max-w-xl mx-auto lg:mx-0 mb-3">
                 Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
               </p>
-              <p className="text-sm text-gray-600 mb-8">Women · Men · Trans · Couples · Non-binary · All body types · 18+</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-5">
-                <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
-                <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
+              <p className="text-xs sm:text-sm text-gray-600 mb-7">Women · Men · Trans · Couples · Non-binary · All body types · 18+</p>
+
+              {/* CTAs — full width on mobile */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-4">
+                <a href="/register" className="w-full sm:w-auto text-center px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
+                <a href="#how" className="w-full sm:w-auto text-center px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
               </div>
-              <a href="/guide" className="inline-block text-sm text-gray-500 hover:text-pink-400 transition-colors duration-200 mb-12">
+              <a href="/guide" className="inline-block text-sm text-gray-500 hover:text-pink-400 transition-colors duration-200 mb-10">
                 New here? Read our free beginner's guide →
               </a>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl lg:max-w-none">
+              {/* Stats — 2×2 on mobile, 4-col on sm+ */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl lg:max-w-none mx-auto lg:mx-0">
                 {[
                   { val: 'Free', label: 'To Join', sub: 'No fees, ever' },
                   { val: '8', label: 'Platforms', sub: 'All paying daily' },
                   { val: '$0', label: 'Commission', sub: 'You keep it all' },
                   { val: '10K+', label: 'Creators', sub: 'Already earning' },
                 ].map(({ val, label, sub }, i) => (
-                  <div key={label} className="glass rounded-2xl py-5 px-4 text-center card-hover neon-border" style={{ transitionDelay: `${i * 60}ms` }}>
+                  <div key={label} className="glass rounded-2xl py-5 px-3 text-center card-hover neon-border" style={{ transitionDelay: `${i * 60}ms` }}>
                     <div className="text-2xl sm:text-3xl font-display font-extrabold gradient-text mb-0.5">{val}</div>
                     <div className="text-sm font-semibold text-white">{label}</div>
-                    <div className="text-xs text-gray-600 mt-0.5">{sub}</div>
+                    <div className="text-xs text-gray-600 mt-0.5 hidden sm:block">{sub}</div>
                   </div>
                 ))}
               </div>
+
+              {/* Mobile-only earnings cards — horizontal scroll */}
+              <div className="lg:hidden mt-6 -mx-4 px-4 overflow-x-auto pb-3" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
+                <div className="flex gap-4" style={{ width: 'max-content' }}>
+                  <Card1 />
+                  <Card2 />
+                  <Card3 />
+                </div>
+              </div>
             </div>
 
-            {/* Right — floating earnings cards */}
-            <EarningsCards />
+            {/* Desktop-only earnings cards — vertical stack */}
+            <div className="hidden lg:flex flex-col gap-5 relative py-8">
+              <div className="float-card-1"><Card1 /></div>
+              <div className="float-card-2" style={{ marginLeft: '24px' }}><Card2 /></div>
+              <div className="float-card-3" style={{ marginLeft: '8px' }}><Card3 /></div>
+            </div>
 
           </div>
         </div>
       </section>
 
       {/* Scrolling platform marquee */}
-      <div className="overflow-hidden border-y border-white/5 py-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <div className="overflow-hidden border-y border-white/5 py-3 sm:py-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
         <div className="marquee-track">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map(({ label, color }, i) => (
-            <span key={i} className="flex items-center gap-6 mx-6 text-sm font-semibold whitespace-nowrap" style={{ color }}>
+            <span key={i} className="flex items-center gap-5 mx-5 text-xs sm:text-sm font-semibold whitespace-nowrap" style={{ color }}>
               {label}
               <span className="w-1 h-1 rounded-full inline-block opacity-40" style={{ background: color }} />
             </span>
@@ -246,20 +251,20 @@ export default function Home() {
       <SectionDivider />
 
       {/* How It Works */}
-      <section id="how" className="py-24 px-4 sm:px-6">
+      <section id="how" className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div ref={howRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Start Earning in <span className="neon-text">4 Steps</span></h2>
-              <p className="text-gray-500">No experience needed. We handle the rest.</p>
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
+              <h2 className="text-3xl sm:text-5xl font-display font-extrabold mb-3">Start Earning in <span className="neon-text">4 Steps</span></h2>
+              <p className="text-gray-500 text-sm sm:text-base">No experience needed. We handle the rest.</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
               {STEPS.map(({ n, title, desc }) => (
-                <div key={n} className="glass rounded-3xl p-7 card-hover neon-border">
-                  <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
-                  <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                <div key={n} className="glass rounded-2xl sm:rounded-3xl p-5 sm:p-7 card-hover neon-border">
+                  <div className="text-3xl sm:text-5xl font-display font-extrabold mb-3 leading-none gradient-text">{n}</div>
+                  <h3 className="font-display font-bold text-sm sm:text-lg mb-1 sm:mb-2">{title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
@@ -270,25 +275,24 @@ export default function Home() {
       <SectionDivider />
 
       {/* Platforms */}
-      <section id="platforms" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
+      <section id="platforms" className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-5xl mx-auto">
           <div ref={platformsRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">One Account. <span className="neon-text">Every Platform.</span></h2>
-              <p className="text-gray-500 max-w-xl mx-auto">We get you set up on the ones that fit you. You just stream — they pay you directly.</p>
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
+              <h2 className="text-3xl sm:text-5xl font-display font-extrabold mb-3">One Account. <span className="neon-text">Every Platform.</span></h2>
+              <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto">We get you set up on the ones that fit you. You just stream — they pay you directly.</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {PLATFORMS.map(({ name, abbr, category, desc, color, href }) => (
                 <a key={name} href={href} target="_blank" rel="noopener noreferrer"
-                  className="glass rounded-2xl p-5 card-hover border border-white/5 group block"
+                  className="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 card-hover border border-white/5 group block"
                   onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = color + '55'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 24px ${color}22`; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm mb-4" style={{ background: `${color}22`, border: `1.5px solid ${color}44`, color }}>{abbr}</div>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={{ background: `${color}18`, color }}>{category}</span>
-                  <h3 className="font-display font-bold text-base mb-1 text-white">{name}</h3>
-                  <p className="text-xs text-gray-500 mb-3 leading-relaxed">{desc}</p>
-                  <span className="text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color }}>Sign Up →</span>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-xs sm:text-sm mb-3 sm:mb-4" style={{ background: `${color}22`, border: `1.5px solid ${color}44`, color }}>{abbr}</div>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-2 sm:mb-3 inline-block" style={{ background: `${color}18`, color }}>{category}</span>
+                  <h3 className="font-display font-bold text-sm mb-1 text-white">{name}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed hidden sm:block">{desc}</p>
                 </a>
               ))}
             </div>
@@ -299,15 +303,15 @@ export default function Home() {
       <SectionDivider />
 
       {/* Why Us */}
-      <section className="py-24 px-4 sm:px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div ref={revenueRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Why Us</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Zero Fees. <span className="gradient-text">100% Yours.</span></h2>
-              <p className="text-gray-500 max-w-lg mx-auto">The platforms pay you directly. We never touch your money — we earn a referral fee from the platforms, not from you.</p>
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Why Us</p>
+              <h2 className="text-3xl sm:text-5xl font-display font-extrabold mb-3">Zero Fees. <span className="gradient-text">100% Yours.</span></h2>
+              <p className="text-gray-500 text-sm sm:text-base max-w-lg mx-auto">The platforms pay you directly. We never touch your money.</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
               {[
                 { icon: '💸', title: 'No Fees Ever', desc: 'XCamModels is 100% free. You keep every dollar the platforms pay you.', link: null },
                 { icon: '⚡', title: 'One Application', desc: 'Fill out one form and we get you set up across all the platforms you choose.', link: null },
@@ -318,22 +322,17 @@ export default function Home() {
               ].map(({ icon, title, desc, link }) => {
                 const inner = (
                   <>
-                    <div className="text-2xl mb-4">{icon}</div>
-                    <h3 className="font-display font-bold text-base mb-2 text-white flex items-center gap-2">
-                      {title}
-                      {link && <span className="text-pink-500 text-xs">→</span>}
+                    <div className="text-xl sm:text-2xl mb-3">{icon}</div>
+                    <h3 className="font-display font-bold text-sm sm:text-base mb-1 sm:mb-2 text-white flex items-center gap-1.5">
+                      {title}{link && <span className="text-pink-500 text-xs">→</span>}
                     </h3>
-                    <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed hidden sm:block">{desc}</p>
                   </>
                 );
                 return link ? (
-                  <a key={title} href={link} className="glass rounded-2xl p-6 card-hover border border-white/5 block">
-                    {inner}
-                  </a>
+                  <a key={title} href={link} className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 card-hover border border-white/5 block">{inner}</a>
                 ) : (
-                  <div key={title} className="glass rounded-2xl p-6 card-hover border border-white/5">
-                    {inner}
-                  </div>
+                  <div key={title} className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 card-hover border border-white/5">{inner}</div>
                 );
               })}
             </div>
@@ -344,14 +343,31 @@ export default function Home() {
       <SectionDivider />
 
       {/* Testimonials */}
-      <section className="py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
         <div className="max-w-5xl mx-auto">
           <div ref={testimonialsRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Real Stories</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Heard From <span className="gradient-text">Our Models</span></h2>
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Real Stories</p>
+              <h2 className="text-3xl sm:text-5xl font-display font-extrabold mb-3">Heard From <span className="gradient-text">Our Models</span></h2>
             </div>
-            <div className="grid sm:grid-cols-3 gap-5">
+            {/* Mobile: horizontal scroll. Desktop: 3-col grid */}
+            <div className="sm:hidden -mx-4 px-4 overflow-x-auto pb-3" style={{ scrollbarWidth: 'none' } as React.CSSProperties}>
+              <div className="flex gap-4" style={{ width: 'max-content' }}>
+                {TESTIMONIALS.map(({ name, platform, quote, earnings, breakdown, stars }) => (
+                  <div key={name} className="glass rounded-2xl p-6 border border-white/5 flex flex-col gap-3" style={{ width: '80vw', maxWidth: '320px' }}>
+                    <div className="flex gap-0.5">{Array(stars).fill(0).map((_, i) => <span key={i} className="text-yellow-400 text-xs">★</span>)}</div>
+                    <p className="text-gray-300 text-sm leading-relaxed">&ldquo;{quote}&rdquo;</p>
+                    <div className="border-t border-white/5 pt-3">
+                      <p className="font-semibold text-white text-sm">{name}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{platform}</p>
+                      <p className="text-xs font-semibold mt-1" style={{ color: '#ff69b4' }}>{earnings}</p>
+                      <p className="text-xs text-gray-600 mt-0.5">{breakdown}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden sm:grid sm:grid-cols-3 gap-5">
               {TESTIMONIALS.map(({ name, platform, quote, earnings, breakdown, stars }) => (
                 <div key={name} className="glass rounded-3xl p-7 card-hover border border-white/5 flex flex-col gap-4">
                   <div className="flex gap-0.5">{Array(stars).fill(0).map((_, i) => <span key={i} className="text-yellow-400 text-sm">★</span>)}</div>
@@ -372,22 +388,22 @@ export default function Home() {
       <SectionDivider />
 
       {/* FAQ */}
-      <section id="faq" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
+      <section id="faq" className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-3xl mx-auto">
           <div ref={faqRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Questions</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold">Got <span className="gradient-text">Questions?</span></h2>
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Questions</p>
+              <h2 className="text-3xl sm:text-5xl font-display font-extrabold">Got <span className="gradient-text">Questions?</span></h2>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {FAQ_ITEMS.map(({ q, a }, i) => (
-                <div key={q} className="glass rounded-2xl overflow-hidden border border-white/5 card-hover">
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full px-6 py-5 text-left font-semibold flex justify-between items-center">
+                <div key={q} className="glass rounded-xl sm:rounded-2xl overflow-hidden border border-white/5">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full px-5 sm:px-6 py-4 sm:py-5 text-left font-semibold text-sm sm:text-base flex justify-between items-center">
                     <span>{q}</span>
                     <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-300" style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
                   </button>
                   <div className="overflow-hidden" style={{ maxHeight: openFaq === i ? '200px' : '0px', transition: 'max-height 0.35s cubic-bezier(0.22,1,0.36,1)' }}>
-                    <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
+                    <p className="px-5 sm:px-6 pb-4 sm:pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
                   </div>
                 </div>
               ))}
@@ -399,18 +415,18 @@ export default function Home() {
       <SectionDivider />
 
       {/* CTA */}
-      <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
+      <section id="apply" className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(255,20,147,0.12) 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Ready to <span className="neon-text">Start Earning?</span></h2>
-          <p className="text-gray-400 mb-8 text-lg">Free to join. No fees ever. The platforms pay you directly — every single day.</p>
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold mb-4">Ready to <span className="neon-text">Start Earning?</span></h2>
+          <p className="text-gray-400 mb-8 text-base sm:text-lg">Free to join. No fees ever. The platforms pay you directly — every single day.</p>
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
             {PLATFORMS.map(({ abbr, color }) => (
               <span key={abbr} className="px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: `${color}18`, border: `1px solid ${color}44`, color }}>{abbr}</span>
             ))}
           </div>
-          <a href="/register" className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn">Apply as a Model</a>
-          <p className="text-gray-600 text-sm mt-6">All genders welcome · Must be 18+ · Government ID required · Response within 24 hours</p>
+          <a href="/register" className="inline-block w-full sm:w-auto px-10 py-5 rounded-full text-white text-lg sm:text-xl font-bold shimmer-btn">Apply as a Model</a>
+          <p className="text-gray-600 text-xs sm:text-sm mt-6">All genders welcome · Must be 18+ · Government ID required · Response within 24 hours</p>
         </div>
       </section>
 
@@ -418,7 +434,7 @@ export default function Home() {
       <footer className="border-t border-white/5 py-10 px-4 sm:px-6 text-sm text-gray-600">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
           <span className="font-display font-bold text-white text-base">XCamModels.com</span>
-          <div className="flex flex-wrap justify-center gap-5">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-5 text-xs sm:text-sm">
             {[['/18usc2257','18 USC 2257'],['/privacy','Privacy Policy'],['/terms','Terms of Service'],['/disclaimer','Disclaimer'],['/anti-trafficking','Anti-Trafficking'],['https://twitter.com/xcammodels','Twitter']].map(([href,label]) => (
               <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} className="hover:text-white transition-colors">{label}</a>
             ))}
