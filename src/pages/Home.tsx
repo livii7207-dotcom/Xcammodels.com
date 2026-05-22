@@ -24,7 +24,7 @@ const FAQ_ITEMS = [
   { q: 'How does daily pay work?', a: 'Your earnings are deposited automatically every day via bank transfer, Paxum, or your preferred method — no minimums.' },
   { q: 'Will anyone find out?', a: 'Your real identity is never exposed. Your name and personal info stay completely private.' },
   { q: 'What do I need to get started?', a: 'A phone or computer, any webcam (HD preferred), decent internet, and a valid government ID.' },
-  { q: 'Who can join?', a: 'Everyone is welcome — women, men, trans, gay, couples, and non-binary creators. All body types, all backgrounds. The only requirements are that you\'re 18+ and have a valid government ID.' },
+  { q: 'Who can join?', a: 'Everyone is welcome — women, men, trans, couples, and non-binary creators. All body types, all backgrounds. The only requirements are that you\'re 18+ and have a valid government ID.' },
   { q: 'Is XCamModels free?', a: 'Completely free. We never take a cut of your earnings. The platforms pay you directly — XCamModels helps you get set up and earns a referral fee from the platforms themselves, not from you.' },
 ];
 
@@ -71,6 +71,74 @@ function SectionDivider() {
   );
 }
 
+function EarningsCards() {
+  return (
+    <div className="hidden lg:flex flex-col gap-5 relative py-8">
+
+      {/* Card 1 — live earnings */}
+      <div className="float-card-1 glass rounded-2xl p-5 border border-white/8 neon-border" style={{ boxShadow: '0 0 40px rgba(244,115,33,0.08)' }}>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-sm font-semibold text-white">Chaturbate</span>
+          </div>
+          <span className="text-xs text-gray-500">Today</span>
+        </div>
+        <div className="flex items-end justify-between mb-3">
+          <div>
+            <div className="text-3xl font-display font-extrabold text-white">$342<span className="text-lg text-gray-400">.00</span></div>
+            <div className="text-xs text-gray-500 mt-0.5">Live tips · Private shows</div>
+          </div>
+          <div className="text-right">
+            <div className="text-sm font-bold text-green-400">+18%</div>
+            <div className="text-xs text-gray-600">vs yesterday</div>
+          </div>
+        </div>
+        <div className="w-full h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+          <div className="h-full rounded-full" style={{ width: '76%', background: 'linear-gradient(to right, #f47321, #ff1493)' }} />
+        </div>
+        <div className="flex justify-between text-xs text-gray-600 mt-1.5">
+          <span>Daily goal</span>
+          <span>76%</span>
+        </div>
+      </div>
+
+      {/* Card 2 — payout notification */}
+      <div className="float-card-2 glass rounded-2xl p-5 border border-white/5" style={{ marginLeft: '24px' }}>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.25)' }}>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-xs text-gray-500 mb-0.5">Payout sent</div>
+            <div className="text-xl font-display font-extrabold text-white">$1,240.00</div>
+            <div className="text-xs text-gray-500">Bank Transfer · XCamModels daily</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Card 3 — platform activity */}
+      <div className="float-card-3 glass rounded-2xl p-5 border border-white/5" style={{ marginLeft: '8px' }}>
+        <div className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-widest">Active platforms</div>
+        <div className="flex gap-2 mb-3">
+          {[
+            { abbr: 'CB', color: '#f47321' },
+            { abbr: 'OF', color: '#00aff0' },
+            { abbr: 'SC', color: '#00b4a0' },
+            { abbr: 'MV', color: '#e91e8c' },
+          ].map(({ abbr, color }) => (
+            <div key={abbr} className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-extrabold font-display" style={{ background: `${color}22`, border: `1.5px solid ${color}55`, color }}>
+              {abbr}
+            </div>
+          ))}
+        </div>
+        <div className="text-xs text-gray-500">Earning across <span className="text-white font-semibold">4 platforms</span> today</div>
+      </div>
+
+    </div>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -109,46 +177,56 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
-        {/* Dot grid texture */}
+      <section className="relative min-h-screen flex items-center px-4 sm:px-6 pt-16 overflow-hidden">
+        {/* Dot grid */}
         <div className="absolute inset-0 dot-grid pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)' }} />
         {/* Aurora blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="aurora-blob w-[800px] h-[800px]" style={{ top: '-5%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, rgba(255,20,147,0.55) 0%, transparent 65%)' }} />
-          <div className="aurora-blob w-[550px] h-[550px]" style={{ bottom: '5%', right: '-8%', background: 'radial-gradient(circle, rgba(168,85,247,0.45) 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
-          <div className="aurora-blob w-[420px] h-[420px]" style={{ top: '35%', left: '-6%', background: 'radial-gradient(circle, rgba(192,38,211,0.4) 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
+          <div className="aurora-blob w-[700px] h-[700px]" style={{ top: '-5%', left: '30%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, rgba(255,20,147,0.5) 0%, transparent 65%)' }} />
+          <div className="aurora-blob w-[500px] h-[500px]" style={{ bottom: '5%', right: '-5%', background: 'radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
+          <div className="aurora-blob w-[380px] h-[380px]" style={{ top: '40%', left: '-5%', background: 'radial-gradient(circle, rgba(192,38,211,0.35) 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
         </div>
 
-        <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-6">
-            Earn More.{' '}<span className="neon-text">Stream Smarter.</span><br />Get Paid Daily.
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-3">
-            Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
-          </p>
-          <p className="text-sm text-gray-600 mb-8">Women · Men · Trans · Gay · Couples · Non-binary · All body types · 18+</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-5">
-            <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
-            <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
-          </div>
-          <a href="/guide" className="inline-block text-sm text-gray-500 hover:text-pink-400 transition-colors duration-200 mb-14">
-            New here? Read our free beginner's guide →
-          </a>
+        <div className="relative z-10 w-full max-w-6xl mx-auto py-20">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-10 xl:gap-16 items-center">
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[
-              { val: 'Free', label: 'To Join', sub: 'No fees, ever' },
-              { val: '8', label: 'Platforms', sub: 'All paying daily' },
-              { val: '$0', label: 'Commission', sub: 'You keep it all' },
-              { val: '10K+', label: 'Creators', sub: 'Already earning' },
-            ].map(({ val, label, sub }, i) => (
-              <div key={label} className="glass rounded-2xl py-6 px-4 text-center card-hover neon-border" style={{ transitionDelay: `${i * 60}ms` }}>
-                <div className="text-3xl sm:text-4xl font-display font-extrabold gradient-text mb-1">{val}</div>
-                <div className="text-sm font-semibold text-white">{label}</div>
-                <div className="text-xs text-gray-600 mt-0.5">{sub}</div>
+            {/* Left — text */}
+            <div ref={heroRef} className="fade-up text-center lg:text-left">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-6">
+                Earn More.{' '}<span className="neon-text">Stream Smarter.</span><br />Get Paid Daily.
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-400 max-w-xl mb-3">
+                Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
+              </p>
+              <p className="text-sm text-gray-600 mb-8">Women · Men · Trans · Couples · Non-binary · All body types · 18+</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-5">
+                <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
+                <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
               </div>
-            ))}
+              <a href="/guide" className="inline-block text-sm text-gray-500 hover:text-pink-400 transition-colors duration-200 mb-12">
+                New here? Read our free beginner's guide →
+              </a>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl lg:max-w-none">
+                {[
+                  { val: 'Free', label: 'To Join', sub: 'No fees, ever' },
+                  { val: '8', label: 'Platforms', sub: 'All paying daily' },
+                  { val: '$0', label: 'Commission', sub: 'You keep it all' },
+                  { val: '10K+', label: 'Creators', sub: 'Already earning' },
+                ].map(({ val, label, sub }, i) => (
+                  <div key={label} className="glass rounded-2xl py-5 px-4 text-center card-hover neon-border" style={{ transitionDelay: `${i * 60}ms` }}>
+                    <div className="text-2xl sm:text-3xl font-display font-extrabold gradient-text mb-0.5">{val}</div>
+                    <div className="text-sm font-semibold text-white">{label}</div>
+                    <div className="text-xs text-gray-600 mt-0.5">{sub}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — floating earnings cards */}
+            <EarningsCards />
+
           </div>
         </div>
       </section>
