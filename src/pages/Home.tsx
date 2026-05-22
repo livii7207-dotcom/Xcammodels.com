@@ -34,20 +34,19 @@ const TESTIMONIALS = [
   { name: 'Jade L.', platform: 'ManyVids + LoyalFans · 6 months', quote: 'Running two platforms sounded complicated but XCamModels handles all the setup. I just focus on content.', earnings: '$4,100/mo avg', breakdown: 'ManyVids clips $2,400 · LoyalFans subs $1,700', stars: 5 },
 ];
 
-const ACTIVITY = [
-  'Jasmine from Texas applied 2 min ago',
-  'Sofia from Florida just got approved',
-  'Lena from California made her first payout today',
-  'Mia from New York applied 5 min ago',
-  'A model in Texas earned $320 today',
-  'Destiny from Georgia was just approved',
-  'Emma from Canada applied 8 min ago',
-  'A model in Florida earned $1,240 this week',
-];
-
-const TRUST = [
-  ['⚡', 'Daily Payouts'], ['🔒', 'ID Verified'], ['🚫', 'No Lock-In'],
-  ['👁️', 'Fully Discreet'], ['🎧', '24hr Support'], ['🌍', 'Work From Home'],
+const MARQUEE_ITEMS = [
+  { label: 'Chaturbate', color: '#f47321' },
+  { label: 'OnlyFans', color: '#00aff0' },
+  { label: 'Stripchat', color: '#00b4a0' },
+  { label: 'Cam4', color: '#e8173a' },
+  { label: 'ManyVids', color: '#e91e8c' },
+  { label: 'IWantClips', color: '#8b5cf6' },
+  { label: 'LoyalFans', color: '#ff6b35' },
+  { label: 'SkyPrivate', color: '#1a73e8' },
+  { label: 'Daily Payouts', color: '#ff1493' },
+  { label: 'Full Privacy', color: '#a855f7' },
+  { label: 'Zero Fees', color: '#ff1493' },
+  { label: 'Work From Home', color: '#a855f7' },
 ];
 
 function useFadeIn() {
@@ -75,22 +74,10 @@ function SectionDivider() {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [onlineCount, setOnlineCount] = useState(() => Math.floor(Math.random() * 101) + 140);
-  const [activityIdx, setActivityIdx] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setOnlineCount(c => Math.max(140, Math.min(240, c + Math.floor(Math.random() * 7) - 3))), 30000);
-    return () => clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => setActivityIdx(i => (i + 1) % ACTIVITY.length), 4000);
-    return () => clearInterval(id);
-  }, []);
 
   const heroRef = useFadeIn(); const howRef = useFadeIn();
   const platformsRef = useFadeIn(); const revenueRef = useFadeIn(); const testimonialsRef = useFadeIn();
-  const faqRef = useFadeIn(); const ctaRef = useFadeIn(); const guideRef = useFadeIn();
+  const faqRef = useFadeIn(); const ctaRef = useFadeIn();
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
@@ -123,57 +110,57 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
+        {/* Dot grid texture */}
+        <div className="absolute inset-0 dot-grid pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)' }} />
+        {/* Aurora blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="aurora-blob w-[900px] h-[900px]" style={{ top: '-10%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, #ff1493 0%, transparent 65%)' }} />
-          <div className="aurora-blob w-[500px] h-[500px]" style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
-          <div className="aurora-blob w-[400px] h-[400px]" style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
+          <div className="aurora-blob w-[800px] h-[800px]" style={{ top: '-5%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, rgba(255,20,147,0.55) 0%, transparent 65%)' }} />
+          <div className="aurora-blob w-[550px] h-[550px]" style={{ bottom: '5%', right: '-8%', background: 'radial-gradient(circle, rgba(168,85,247,0.45) 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
+          <div className="aurora-blob w-[420px] h-[420px]" style={{ top: '35%', left: '-6%', background: 'radial-gradient(circle, rgba(192,38,211,0.4) 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
         </div>
+
         <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-green-400 font-medium mb-4">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            {onlineCount} models online right now
-          </div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-6">
             Earn More.{' '}<span className="neon-text">Stream Smarter.</span><br />Get Paid Daily.
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
             Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
           </p>
-          <p className="text-sm text-gray-600 mb-8">Webcam · 18+ · All body types · Fully discreet · Work from home</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-5">
             <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
             <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
           </div>
-          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-gray-400" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-pink-500 flex-shrink-0 animate-pulse" />
-            <span key={activityIdx} className="activity-fade">{ACTIVITY[activityIdx]}</span>
-          </div>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[['Free','To Join'],['Daily','Payouts'],['8','Platforms'],['10K+','Models']].map(([val,label], i) => (
-              <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover" style={{ transitionDelay: `${i * 60}ms` }}>
-                <div className="text-2xl font-display font-bold gradient-text">{val}</div>
-                <div className="text-xs text-gray-500 mt-1">{label}</div>
+          <a href="/guide" className="inline-block text-sm text-gray-500 hover:text-pink-400 transition-colors duration-200 mb-14">
+            New here? Read our free beginner's guide →
+          </a>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              { val: 'Free', label: 'To Join', sub: 'No fees, ever' },
+              { val: '8', label: 'Platforms', sub: 'All paying daily' },
+              { val: '$0', label: 'Commission', sub: 'You keep it all' },
+              { val: '10K+', label: 'Creators', sub: 'Already earning' },
+            ].map(({ val, label, sub }, i) => (
+              <div key={label} className="glass rounded-2xl py-6 px-4 text-center card-hover neon-border" style={{ transitionDelay: `${i * 60}ms` }}>
+                <div className="text-3xl sm:text-4xl font-display font-extrabold gradient-text mb-1">{val}</div>
+                <div className="text-sm font-semibold text-white">{label}</div>
+                <div className="text-xs text-gray-600 mt-0.5">{sub}</div>
               </div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {TRUST.map(([icon,label]) => (
-              <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-gray-400 transition-colors duration-200 hover:text-white cursor-default" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                {icon} {label}
-              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Guide Banner */}
-      <div className="px-4 sm:px-6 py-4" style={{ background: 'rgba(255,20,147,0.06)', borderTop: '1px solid rgba(255,20,147,0.12)', borderBottom: '1px solid rgba(255,20,147,0.12)' }}>
-        <div ref={guideRef} className="fade-up max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-          <div>
-            <p className="text-sm font-semibold text-white">📖 New to cam modelling?</p>
-            <p className="text-xs text-gray-400 mt-0.5">Read our free step-by-step guide built for complete beginners — setup to first payout.</p>
-          </div>
-          <a href="/guide" className="flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold text-white shimmer-btn whitespace-nowrap">Read the Guide →</a>
+      {/* Scrolling platform marquee */}
+      <div className="overflow-hidden border-y border-white/5 py-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className="marquee-track">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map(({ label, color }, i) => (
+            <span key={i} className="flex items-center gap-6 mx-6 text-sm font-semibold whitespace-nowrap" style={{ color }}>
+              {label}
+              <span className="w-1 h-1 rounded-full inline-block opacity-40" style={{ background: color }} />
+            </span>
+          ))}
         </div>
       </div>
 
@@ -215,7 +202,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {PLATFORMS.map(({ name, abbr, category, desc, color, href }) => (
                 <a key={name} href={href} target="_blank" rel="noopener noreferrer"
-                  className="glass rounded-2xl p-5 card-hover border border-white/5 group block transition-all duration-300"
+                  className="glass rounded-2xl p-5 card-hover border border-white/5 group block"
                   onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = color + '55'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 24px ${color}22`; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}>
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm mb-4" style={{ background: `${color}22`, border: `1.5px solid ${color}44`, color }}>{abbr}</div>
@@ -232,7 +219,7 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* Why */}
+      {/* Why Us */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div ref={revenueRef} className="fade-up">
@@ -243,16 +230,16 @@ export default function Home() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                ['💸','No Fees Ever','XCamModels is 100% free. You keep every dollar the platforms pay you.', null],
-                ['⚡','One Application','Fill out one form and we get you set up across all the platforms you choose.', null],
-                ['📅','Daily Payouts','Every platform we work with pays out daily via Paxum, bank transfer, or crypto.', null],
-                ['🔒','Full Privacy','Your real name is never public. We show you exactly how to stay anonymous.', null],
-                ['🎧','Real Support','Actual humans answer your setup questions — not bots, not ticketing queues.', null],
-                ['📖','Free Guide','New to this? Read our step-by-step guide built for complete beginners.', '/guide'],
-              ].map(([icon,title,desc,link]) => {
+                { icon: '💸', title: 'No Fees Ever', desc: 'XCamModels is 100% free. You keep every dollar the platforms pay you.', link: null },
+                { icon: '⚡', title: 'One Application', desc: 'Fill out one form and we get you set up across all the platforms you choose.', link: null },
+                { icon: '📅', title: 'Daily Payouts', desc: 'Every platform we work with pays out daily via Paxum, bank transfer, or crypto.', link: null },
+                { icon: '🔒', title: 'Full Privacy', desc: 'Your real name is never public. We show you exactly how to stay anonymous.', link: null },
+                { icon: '🎧', title: 'Real Support', desc: 'Actual humans answer your setup questions — not bots, not ticketing queues.', link: null },
+                { icon: '📖', title: 'Free Guide', desc: 'New to this? Read our step-by-step guide built for complete beginners.', link: '/guide' },
+              ].map(({ icon, title, desc, link }) => {
                 const inner = (
                   <>
-                    <div className="text-2xl mb-3">{icon}</div>
+                    <div className="text-2xl mb-4">{icon}</div>
                     <h3 className="font-display font-bold text-base mb-2 text-white flex items-center gap-2">
                       {title}
                       {link && <span className="text-pink-500 text-xs">→</span>}
@@ -261,11 +248,11 @@ export default function Home() {
                   </>
                 );
                 return link ? (
-                  <a key={String(title)} href={link} className="glass rounded-2xl p-6 card-hover border border-white/5 block group" style={{ textDecoration: 'none' }}>
+                  <a key={title} href={link} className="glass rounded-2xl p-6 card-hover border border-white/5 block">
                     {inner}
                   </a>
                 ) : (
-                  <div key={String(title)} className="glass rounded-2xl p-6 card-hover border border-white/5">
+                  <div key={title} className="glass rounded-2xl p-6 card-hover border border-white/5">
                     {inner}
                   </div>
                 );
@@ -320,13 +307,7 @@ export default function Home() {
                     <span>{q}</span>
                     <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-300" style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
                   </button>
-                  <div
-                    className="overflow-hidden"
-                    style={{
-                      maxHeight: openFaq === i ? '200px' : '0px',
-                      transition: 'max-height 0.35s cubic-bezier(0.22,1,0.36,1)',
-                    }}
-                  >
+                  <div className="overflow-hidden" style={{ maxHeight: openFaq === i ? '200px' : '0px', transition: 'max-height 0.35s cubic-bezier(0.22,1,0.36,1)' }}>
                     <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
                   </div>
                 </div>
@@ -340,7 +321,7 @@ export default function Home() {
 
       {/* CTA */}
       <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-10" style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(255,20,147,0.12) 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Ready to <span className="neon-text">Start Earning?</span></h2>
           <p className="text-gray-400 mb-8 text-lg">Free to join. No fees ever. The platforms pay you directly — every single day.</p>
