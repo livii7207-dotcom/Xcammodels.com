@@ -24,7 +24,7 @@ const FAQ_ITEMS = [
   { q: 'How does daily pay work?', a: 'Your earnings are deposited automatically every day via bank transfer, Paxum, or your preferred method — no minimums.' },
   { q: 'Will anyone find out?', a: 'Your real identity is never exposed. Your name and personal info stay completely private.' },
   { q: 'What do I need to get started?', a: 'A phone or computer, any webcam (HD preferred), decent internet, and a valid government ID.' },
-  { q: 'Who can join?', a: 'Everyone is welcome — women, men, couples, and non-binary creators. All body types, all backgrounds. The only requirements are that you\'re 18+ and have a valid government ID.' },
+  { q: 'Who can join?', a: 'Everyone is welcome — women, men, trans, gay, couples, and non-binary creators. All body types, all backgrounds. The only requirements are that you\'re 18+ and have a valid government ID.' },
   { q: 'Is XCamModels free?', a: 'Completely free. We never take a cut of your earnings. The platforms pay you directly — XCamModels helps you get set up and earns a referral fee from the platforms themselves, not from you.' },
 ];
 
@@ -126,7 +126,7 @@ export default function Home() {
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-3">
             Apply once. Get set up on 8 top platforms. The platforms pay you directly — every single day. Free to join, no fees ever.
           </p>
-          <p className="text-sm text-gray-600 mb-8">Women · Men · Couples · Non-binary · All body types · 18+</p>
+          <p className="text-sm text-gray-600 mb-8">Women · Men · Trans · Gay · Couples · Non-binary · All body types · 18+</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-5">
             <a href="/register" className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">Apply as a Model →</a>
             <a href="#how" className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">How It Works</a>
