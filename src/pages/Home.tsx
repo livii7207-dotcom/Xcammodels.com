@@ -1,13 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import Logo from '../components/Logo';
-import LogoPinup from '../components/LogoPinup';
-
-const MODELS = [
-  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', color: '#ff1493', img: '/models/model1.jpg' },
-  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', color: '#e11d91', img: '/models/model2.jpg' },
-  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', color: '#a855f7', img: '/models/model3.jpg' },
-  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', color: '#c026d3', img: '/models/model4.jpg' },
-];
 
 const PLATFORMS = [
   { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=5zjT&campaign=DddwF&track=default' },
@@ -47,10 +39,10 @@ const ACTIVITY = [
   'Sofia from Florida just got approved',
   'Lena from California made her first payout today',
   'Mia from New York applied 5 min ago',
-  'Aria earned $320 today',
+  'A model in Texas earned $320 today',
   'Destiny from Georgia was just approved',
   'Emma from Canada applied 8 min ago',
-  'Luna earned $1,240 this week',
+  'A model in Florida earned $1,240 this week',
 ];
 
 const TRUST = [
@@ -74,10 +66,16 @@ function useFadeIn() {
   return ref;
 }
 
+function SectionDivider() {
+  return (
+    <div className="h-px max-w-4xl mx-auto" style={{ background: 'linear-gradient(to right, transparent, rgba(255,20,147,0.18), transparent)' }} />
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [onlineCount, setOnlineCount] = useState(187);
+  const [onlineCount, setOnlineCount] = useState(() => Math.floor(Math.random() * 101) + 140);
   const [activityIdx, setActivityIdx] = useState(0);
 
   useEffect(() => {
@@ -90,9 +88,9 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
-  const heroRef = useFadeIn(); const modelsRef = useFadeIn(); const howRef = useFadeIn();
+  const heroRef = useFadeIn(); const howRef = useFadeIn();
   const platformsRef = useFadeIn(); const revenueRef = useFadeIn(); const testimonialsRef = useFadeIn();
-  const faqRef = useFadeIn(); const ctaRef = useFadeIn();
+  const faqRef = useFadeIn(); const ctaRef = useFadeIn(); const guideRef = useFadeIn();
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
@@ -102,21 +100,21 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
           <a href="/"><Logo size="md" /></a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-gray-400">
-            {[['#models','Models'],['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
-              <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
+            {[['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
+              <a key={href} href={href} className="hover:text-white transition-colors duration-200">{label}</a>
             ))}
             <a href="/register" className="px-5 py-2 rounded-full text-white font-semibold shimmer-btn">Start Earning</a>
           </nav>
-          <button className="md:hidden text-gray-400 hover:text-white" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="md:hidden text-gray-400 hover:text-white transition-colors" onClick={() => setMenuOpen(!menuOpen)}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
             </svg>
           </button>
         </div>
         {menuOpen && (
-          <div className="md:hidden glass px-5 py-5 flex flex-col gap-4 text-sm font-medium text-gray-300 border-t border-white/5">
-            {[['#models','Models'],['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          <div className="mobile-menu-open md:hidden glass px-5 py-5 flex flex-col gap-4 text-sm font-medium text-gray-300 border-t border-white/5">
+            {[['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)} className="hover:text-white transition-colors">{label}</a>
             ))}
             <a href="/register" onClick={() => setMenuOpen(false)} className="text-center py-3 rounded-full text-white font-semibold shimmer-btn">Start Earning</a>
           </div>
@@ -129,12 +127,6 @@ export default function Home() {
           <div className="aurora-blob w-[900px] h-[900px]" style={{ top: '-10%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, #ff1493 0%, transparent 65%)' }} />
           <div className="aurora-blob w-[500px] h-[500px]" style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
           <div className="aurora-blob w-[400px] h-[400px]" style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
-        </div>
-        <div className="hidden lg:block absolute right-6 xl:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none" style={{ opacity: 0.25 }}>
-          <LogoPinup size="lg" />
-        </div>
-        <div className="hidden lg:block absolute left-6 xl:left-20 top-1/2 -translate-y-1/2 pointer-events-none select-none" style={{ opacity: 0.15, transform: 'translateY(-50%) scaleX(-1)' }}>
-          <LogoPinup size="md" />
         </div>
         <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-green-400 font-medium mb-4">
@@ -157,8 +149,8 @@ export default function Home() {
             <span key={activityIdx} className="activity-fade">{ACTIVITY[activityIdx]}</span>
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[['Free','To Join'],['Daily','Payouts'],['8','Platforms'],['10K+','Models']].map(([val,label]) => (
-              <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover">
+            {[['Free','To Join'],['Daily','Payouts'],['8','Platforms'],['10K+','Models']].map(([val,label], i) => (
+              <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover" style={{ transitionDelay: `${i * 60}ms` }}>
                 <div className="text-2xl font-display font-bold gradient-text">{val}</div>
                 <div className="text-xs text-gray-500 mt-1">{label}</div>
               </div>
@@ -166,7 +158,7 @@ export default function Home() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {TRUST.map(([icon,label]) => (
-              <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-gray-400" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-gray-400 transition-colors duration-200 hover:text-white cursor-default" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
                 {icon} {label}
               </span>
             ))}
@@ -174,37 +166,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Models */}
-      <section id="models" className="py-24 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div ref={modelsRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Real Models. <span className="gradient-text">Real Earnings.</span></h2>
-              <p className="text-gray-500 max-w-xl mx-auto">Every model on our network gets daily pay, full privacy, and dedicated support.</p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {MODELS.map(({ name, tag, earnings, color, img }, i) => (
-                <div key={name} className={`float-card-${i + 1}`}>
-                  <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer rope-light" style={{ height: '420px' }}>
-                    <img src={img} alt={name} className="absolute inset-0 w-full h-full object-cover object-top" />
-                    <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}22 0%, transparent 70%)` }} />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="text-xs font-bold px-3 py-1.5 rounded-full" style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>{tag}</span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                      <p className="font-display font-bold text-xl mb-0.5">{name}</p>
-                      <p className="text-sm font-medium mb-4" style={{ color }}>{earnings}</p>
-                      <a href="/register" className="inline-block w-full text-center py-2.5 rounded-xl text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300" style={{ background: `linear-gradient(135deg, ${color}, #a855f7)` }}>Earn Like {name} →</a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Guide Banner */}
+      <div className="px-4 sm:px-6 py-4" style={{ background: 'rgba(255,20,147,0.06)', borderTop: '1px solid rgba(255,20,147,0.12)', borderBottom: '1px solid rgba(255,20,147,0.12)' }}>
+        <div ref={guideRef} className="fade-up max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div>
+            <p className="text-sm font-semibold text-white">📖 New to cam modelling?</p>
+            <p className="text-xs text-gray-400 mt-0.5">Read our free step-by-step guide built for complete beginners — setup to first payout.</p>
           </div>
+          <a href="/guide" className="flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold text-white shimmer-btn whitespace-nowrap">Read the Guide →</a>
         </div>
-      </section>
+      </div>
+
+      <SectionDivider />
 
       {/* How It Works */}
       <section id="how" className="py-24 px-4 sm:px-6">
@@ -227,6 +200,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Platforms */}
       <section id="platforms" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
@@ -255,6 +230,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Why */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
@@ -266,23 +243,39 @@ export default function Home() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                ['💸','No Fees Ever','XCamModels is 100% free. You keep every dollar the platforms pay you.'],
-                ['⚡','One Application','Fill out one form and we get you set up across all the platforms you choose.'],
-                ['📅','Daily Payouts','Every platform we work with pays out daily via Paxum, bank transfer, or crypto.'],
-                ['🔒','Full Privacy','Your real name is never public. We show you exactly how to stay anonymous.'],
-                ['🎧','Real Support','Actual humans answer your setup questions — not bots, not ticketing queues.'],
-                ['📖','Free Guide','New to this? Read our step-by-step guide built for complete beginners.'],
-              ].map(([icon,title,desc]) => (
-                <div key={title} className="glass rounded-2xl p-6 card-hover border border-white/5">
-                  <div className="text-2xl mb-3">{icon}</div>
-                  <h3 className="font-display font-bold text-base mb-2 text-white">{title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
-                </div>
-              ))}
+                ['💸','No Fees Ever','XCamModels is 100% free. You keep every dollar the platforms pay you.', null],
+                ['⚡','One Application','Fill out one form and we get you set up across all the platforms you choose.', null],
+                ['📅','Daily Payouts','Every platform we work with pays out daily via Paxum, bank transfer, or crypto.', null],
+                ['🔒','Full Privacy','Your real name is never public. We show you exactly how to stay anonymous.', null],
+                ['🎧','Real Support','Actual humans answer your setup questions — not bots, not ticketing queues.', null],
+                ['📖','Free Guide','New to this? Read our step-by-step guide built for complete beginners.', '/guide'],
+              ].map(([icon,title,desc,link]) => {
+                const inner = (
+                  <>
+                    <div className="text-2xl mb-3">{icon}</div>
+                    <h3 className="font-display font-bold text-base mb-2 text-white flex items-center gap-2">
+                      {title}
+                      {link && <span className="text-pink-500 text-xs">→</span>}
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
+                  </>
+                );
+                return link ? (
+                  <a key={String(title)} href={link} className="glass rounded-2xl p-6 card-hover border border-white/5 block group" style={{ textDecoration: 'none' }}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={String(title)} className="glass rounded-2xl p-6 card-hover border border-white/5">
+                    {inner}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Testimonials */}
       <section className="py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
@@ -310,6 +303,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* FAQ */}
       <section id="faq" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-3xl mx-auto">
@@ -323,9 +318,17 @@ export default function Home() {
                 <div key={q} className="glass rounded-2xl overflow-hidden border border-white/5 card-hover">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full px-6 py-5 text-left font-semibold flex justify-between items-center">
                     <span>{q}</span>
-                    <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-200" style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
+                    <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-300" style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
                   </button>
-                  {openFaq === i && <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>}
+                  <div
+                    className="overflow-hidden"
+                    style={{
+                      maxHeight: openFaq === i ? '200px' : '0px',
+                      transition: 'max-height 0.35s cubic-bezier(0.22,1,0.36,1)',
+                    }}
+                  >
+                    <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -333,13 +336,19 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* CTA */}
       <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10" style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
-          <div className="flex justify-center mb-8"><LogoPinup size="md" showText /></div>
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Ready to <span className="neon-text">Start Earning?</span></h2>
-          <p className="text-gray-400 mb-10 text-lg">Free to join. No fees ever. The platforms pay you directly — every single day.</p>
+          <p className="text-gray-400 mb-8 text-lg">Free to join. No fees ever. The platforms pay you directly — every single day.</p>
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {PLATFORMS.map(({ abbr, color }) => (
+              <span key={abbr} className="px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: `${color}18`, border: `1px solid ${color}44`, color }}>{abbr}</span>
+            ))}
+          </div>
           <a href="/register" className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn">Apply as a Model</a>
           <p className="text-gray-600 text-sm mt-6">Must be 18+ · Government ID required · Response within 24 hours</p>
         </div>
