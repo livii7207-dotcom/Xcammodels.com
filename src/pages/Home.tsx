@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Logo from '../components/Logo';
 
-const MODELS = [
-  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', color: '#ff1493', img: '/models/model1.jpg' },
-  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', color: '#e11d91', img: '/models/model2.jpg' },
-  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', color: '#a855f7', img: '/models/model3.jpg' },
-  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', color: '#c026d3', img: '/models/model4.jpg' },
-];
-
 const PLATFORMS = [
   { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=5zjT&campaign=DddwF&track=default' },
   { name: 'OnlyFans', abbr: 'OF', category: 'Content', desc: 'Subscriptions, pay-per-view & direct tips', color: '#00aff0', href: 'https://onlyfans.com?ref=40962198' },
@@ -46,10 +39,10 @@ const ACTIVITY = [
   'Sofia from Florida just got approved',
   'Lena from California made her first payout today',
   'Mia from New York applied 5 min ago',
-  'Aria earned $320 today',
+  'A model in Texas earned $320 today',
   'Destiny from Georgia was just approved',
   'Emma from Canada applied 8 min ago',
-  'Luna earned $1,240 this week',
+  'A model in Florida earned $1,240 this week',
 ];
 
 const TRUST = [
@@ -95,7 +88,7 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
-  const heroRef = useFadeIn(); const modelsRef = useFadeIn(); const howRef = useFadeIn();
+  const heroRef = useFadeIn(); const howRef = useFadeIn();
   const platformsRef = useFadeIn(); const revenueRef = useFadeIn(); const testimonialsRef = useFadeIn();
   const faqRef = useFadeIn(); const ctaRef = useFadeIn(); const guideRef = useFadeIn();
 
@@ -107,7 +100,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
           <a href="/"><Logo size="md" /></a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-gray-400">
-            {[['#models','Models'],['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
+            {[['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
               <a key={href} href={href} className="hover:text-white transition-colors duration-200">{label}</a>
             ))}
             <a href="/register" className="px-5 py-2 rounded-full text-white font-semibold shimmer-btn">Start Earning</a>
@@ -120,7 +113,7 @@ export default function Home() {
         </div>
         {menuOpen && (
           <div className="mobile-menu-open md:hidden glass px-5 py-5 flex flex-col gap-4 text-sm font-medium text-gray-300 border-t border-white/5">
-            {[['#models','Models'],['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
+            {[['#platforms','Platforms'],['#how','How It Works'],['/guide','Guide'],['#faq','FAQ']].map(([href,label]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)} className="hover:text-white transition-colors">{label}</a>
             ))}
             <a href="/register" onClick={() => setMenuOpen(false)} className="text-center py-3 rounded-full text-white font-semibold shimmer-btn">Start Earning</a>
@@ -183,40 +176,6 @@ export default function Home() {
           <a href="/guide" className="flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold text-white shimmer-btn whitespace-nowrap">Read the Guide →</a>
         </div>
       </div>
-
-      <SectionDivider />
-
-      {/* Models */}
-      <section id="models" className="py-24 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div ref={modelsRef} className="fade-up">
-            <div className="text-center mb-14">
-              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
-              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">Real Models. <span className="gradient-text">Real Earnings.</span></h2>
-              <p className="text-gray-500 max-w-xl mx-auto">Every model on our network gets daily pay, full privacy, and dedicated support.</p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {MODELS.map(({ name, tag, earnings, color, img }, i) => (
-                <div key={name} className={`float-card-${i + 1}`}>
-                  <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer rope-light" style={{ height: '420px' }}>
-                    <img src={img} alt={name} className="absolute inset-0 w-full h-full object-cover object-top" />
-                    <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}22 0%, transparent 70%)` }} />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="text-xs font-bold px-3 py-1.5 rounded-full" style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>{tag}</span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                      <p className="font-display font-bold text-xl mb-0.5">{name}</p>
-                      <p className="text-sm font-medium mb-4" style={{ color }}>{earnings}</p>
-                      <a href="/register" className="inline-block w-full text-center py-2.5 rounded-xl text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300" style={{ background: `linear-gradient(135deg, ${color}, #a855f7)` }}>Earn Like {name} →</a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <SectionDivider />
 
